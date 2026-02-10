@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Valentine Question 💘</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: "Comic Sans MS", "Arial", sans-serif;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+        }
+
+        /* Floating flowers */
+        .flower {
+            position: absolute;
+            font-size: 28px;
+            animation: float 12s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(110vh) rotate(0deg);
+            }
+
+            to {
+                transform: translateY(-10vh) rotate(360deg);
+            }
+        }
+
+        .card {
+            position: relative;
+            z-index: 2;
+            background: white;
+            width: 360px;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+            animation: popIn 1s ease;
+            margin: auto;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.7) translateY(-50%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1) translateY(-50%);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            position: relative;
+            height: 150px;
+        }
+
+        button {
+            padding: 14px 26px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            transition: all 0.2s ease;
+        }
+
+        #yesBtn {
+            background: #ff4d6d;
+            color: white;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.1);
+            }
+        }
+
+        #noBtn {
+            background: #d3d3d3;
+            color: black;
+            left: 20px;
+            top: 20px;
+        }
+
+        .taunt {
+            font-size: 14px;
+            color: #ff4d6d;
+            margin-top: 10px;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Flowers -->
+    <script>
+    const flowers = ["🌹","🌹","🌹","🌸","🌸","🌷","💐","🌼"];
+    for (let i = 0; i < 30; i++) {
+      const f = document.createElement("div");
+      f.className = "flower";
+      f.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+      f.style.left = Math.random() * 100 + "vw";
+      f.style.animationDuration = 8 + Math.random() * 10 + "s";
+      f.style.fontSize = 20 + Math.random() * 20 + "px";
+      document.body.appendChild(f);
+    }
+    </script>
+
+    <div class="card">
+        <h1>Hey you 💕</h1>
+        <p>Will you be my girlfriend?</p>
+
+        <div class="buttons">
+            <button id="yesBtn" onclick="sayYes()">Yes 💖</button>
+            <button id="noBtn">No 😬</button>
+        </div>
+
+        <div class="taunt" id="taunt"></div>
+    </div>
+
+    <script>
+    const noBtn = document.getElementById("noBtn");
+    const taunt = document.getElementById("taunt");
+
+    const taunts = [
+      "Nice try 😏",
+      "Absolutely not 🙃",
+      "Why would you even try?",
+      "Wrong button bestie 😌",
+      "System error: NO disabled 💀",
+      "Bruh 😂",
+      "That’s illegal here 🚫"
+    ];
+
+    let attempts = 0;
+
+    noBtn.addEventListener("mouseover", () => {
+      attempts++;
+
+      const x = Math.random() * 260;
+      const y = Math.random() * 110;
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+
+      noBtn.style.transform = `
+        rotate(${Math.random() * 360}deg)
+        scale(${0.7 + Math.random() * 0.6})
+      `;
+
+      taunt.innerText = taunts[Math.floor(Math.random() * taunts.length)];
+
+      if (attempts > 6) {
+        noBtn.innerText = "You sure? 😇";
+      }
+      if (attempts > 10) {
+        noBtn.innerText = "Still no? 😭";
+      }
+      if (attempts > 14) {
+        noBtn.innerText = "Okay fine…";
+        setTimeout(() => {
+          noBtn.style.display = "none";
+          taunt.innerText = "Yeah… I didn’t think so 😌💖";
+        }, 600);
+      }
+    });
+
+    function sayYes() {
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          background:linear-gradient(135deg,#ffafbd,#ffc3a0);
+          font-family:Comic Sans MS, Arial;
+          text-align:center;
+          animation: popIn 1s ease;
+        ">
+          <h1>
+            YAYYYYY 💖🥹🌹<br><br>
+            Best. Choice. Ever.<br><br>
+            Happy Valentine’s Day 💘
+          </h1>
+        </div>
+      `;
+    }
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Valentine Question 💘</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: "Comic Sans MS", "Arial", sans-serif;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+        }
+
+        /* Floating flowers */
+        .flower {
+            position: absolute;
+            font-size: 28px;
+            animation: float 12s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(110vh) rotate(0deg);
+            }
+
+            to {
+                transform: translateY(-10vh) rotate(360deg);
+            }
+        }
+
+        .card {
+            position: relative;
+            z-index: 2;
+            background: white;
+            width: 360px;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+            animation: popIn 1s ease;
+            margin: auto;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.7) translateY(-50%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1) translateY(-50%);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            position: relative;
+            height: 150px;
+        }
+
+        button {
+            padding: 14px 26px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            transition: all 0.2s ease;
+        }
+
+        #yesBtn {
+            background: #ff4d6d;
+            color: white;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.1);
+            }
+        }
+
+        #noBtn {
+            background: #d3d3d3;
+            color: black;
+            left: 20px;
+            top: 20px;
+        }
+
+        .taunt {
+            font-size: 14px;
+            color: #ff4d6d;
+            margin-top: 10px;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Flowers -->
+    <script>
+    const flowers = ["🌹","🌹","🌹","🌸","🌸","🌷","💐","🌼"];
+    for (let i = 0; i < 30; i++) {
+      const f = document.createElement("div");
+      f.className = "flower";
+      f.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+      f.style.left = Math.random() * 100 + "vw";
+      f.style.animationDuration = 8 + Math.random() * 10 + "s";
+      f.style.fontSize = 20 + Math.random() * 20 + "px";
+      document.body.appendChild(f);
+    }
+    </script>
+
+    <div class="card">
+        <h1>Hey you 💕</h1>
+        <p>Will you be my girlfriend?</p>
+
+        <div class="buttons">
+            <button id="yesBtn" onclick="sayYes()">Yes 💖</button>
+            <button id="noBtn">No 😬</button>
+        </div>
+
+        <div class="taunt" id="taunt"></div>
+    </div>
+
+    <script>
+    const noBtn = document.getElementById("noBtn");
+    const taunt = document.getElementById("taunt");
+
+    const taunts = [
+      "Nice try 😏",
+      "Absolutely not 🙃",
+      "Why would you even try?",
+      "Wrong button bestie 😌",
+      "System error: NO disabled 💀",
+      "Bruh 😂",
+      "That’s illegal here 🚫"
+    ];
+
+    let attempts = 0;
+
+    noBtn.addEventListener("mouseover", () => {
+      attempts++;
+
+      const x = Math.random() * 260;
+      const y = Math.random() * 110;
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+
+      noBtn.style.transform = `
+        rotate(${Math.random() * 360}deg)
+        scale(${0.7 + Math.random() * 0.6})
+      `;
+
+      taunt.innerText = taunts[Math.floor(Math.random() * taunts.length)];
+
+      if (attempts > 6) {
+        noBtn.innerText = "You sure? 😇";
+      }
+      if (attempts > 10) {
+        noBtn.innerText = "Still no? 😭";
+      }
+      if (attempts > 14) {
+        noBtn.innerText = "Okay fine…";
+        setTimeout(() => {
+          noBtn.style.display = "none";
+          taunt.innerText = "Yeah… I didn’t think so 😌💖";
+        }, 600);
+      }
+    });
+
+    function sayYes() {
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          background:linear-gradient(135deg,#ffafbd,#ffc3a0);
+          font-family:Comic Sans MS, Arial;
+          text-align:center;
+          animation: popIn 1s ease;
+        ">
+          <h1>
+            YAYYYYY 💖🥹🌹<br><br>
+            Best. Choice. Ever.<br><br>
+            Happy Valentine’s Day 💘
+          </h1>
+        </div>
+      `;
+    }
+    </script>
+
+</body>
+</html>
